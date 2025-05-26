@@ -1,0 +1,7 @@
+# model-service/requirements.txt
+Flask==2.3.3
+torch==2.0.1  # IMPORTANT: Replace with your specific PyTorch version
+torchvision==0.15.2 # IMPORTANT: Replace with your specific torchvision version
+numpy==1.24.3
+opencv-python==4.7.0.72
+Pillow==9.4.0
