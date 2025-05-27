@@ -13,7 +13,7 @@ const documentSchema = mongoose.Schema(
       required: true,
     },
     filePath: {
-      type: String, // Path to the file on the server's local file system
+      type: String, // Publicly accessible URL path (e.g., '/uploads/filename.ext')
       required: true,
     },
     fileType: {

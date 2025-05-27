@@ -8,6 +8,7 @@ const patientRoutes = require('./routes/patientRoutes');
 const doctorRoutes = require('./routes/doctorRoutes');
 const appointmentRoutes = require('./routes/appointmentRoutes'); 
 const cors = require('cors');
+const path = require('path');
 // Load environment variables
 dotenv.config();
 
@@ -27,6 +28,12 @@ app.use(cors({
   credentials: true // Allow cookies/authorization headers to be sent
 }));
 
+// --- Static Files Serving ---
+// Serve the 'uploads' folder statically. This is where your documents/images are stored.
+// For example, if an image is saved as 'uploads/retinal-image-123.jpg', it can be accessed via http://localhost:5005/uploads/retinal-image-123.jpg
+// This is the correct and only line needed for serving uploads:
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 
 // Basic Route for testing
 app.get('/', (req, res) => {
@@ -40,7 +47,7 @@ app.use('/api/appointments', require('./routes/appointmentRoutes'));
 // --- Static Files Serving ---
 // Serve the 'uploads' folder statically. This is where your documents/images are stored.
 // For example, if an image is saved as 'uploads/retinal-image-123.jpg', it can be accessed via http://localhost:5000/uploads/retinal-image-123.jpg
-app.use('/uploads', express.static('uploads'));
+//app.use('/uploads', express.static('uploads'));
 app.use(errorHandler); 
 
 // Define the port from environment variables or default to 5000

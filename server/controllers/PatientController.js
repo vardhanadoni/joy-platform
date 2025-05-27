@@ -577,11 +577,14 @@ const uploadDocument = asyncHandler(async (req, res) => {
     throw new Error('Invalid or missing document type. Must be "prescription", "id_proof", or "other".');
   }
 
+  // FIX HERE: Use path.posix.join to ensure forward slashes for URL paths
+  // req.file.filename should be just the file name, without directory parts
+  const publicFilePath = path.posix.join('/uploads', req.file.filename);
   // Create a new Document record in MongoDB
   const document = await Document.create({
     user: req.user._id,
     fileName: req.file.originalname,
-    filePath: req.file.path, // Path where multer saved the file
+    filePath: publicFilePath, // Storing the public URL path
     fileType: req.file.mimetype,
     documentType: documentType,
   });
@@ -614,11 +617,14 @@ const uploadRetinalImage = asyncHandler(async (req, res) => {
   let prediction; // Declare outside try-catch for cleanup
 
   try {
+    
+    // FIX HERE: Use path.posix.join to ensure forward slashes for URL paths
+    const publicFilePath = path.posix.join('/uploads', req.file.filename);
     // 1. Create Document entry first
     retinalDocument = await Document.create({
       user: req.user._id,
       fileName: originalname,
-      filePath: filePath, // Local path where Multer saved the image
+      filePath: publicFilePath, // Storing the public URL path
       fileType: mimetype,
       documentType: 'retinal_image',
     });
