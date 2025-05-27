@@ -1,4 +1,4 @@
-// client/src/pages/home/HomePage.js
+// frontend/src/pages/home/HomePage.js
 import React from 'react';
 import { Link } from 'react-router-dom'; // Import Link for navigation
 

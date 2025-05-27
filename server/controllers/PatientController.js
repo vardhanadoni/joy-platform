@@ -109,7 +109,7 @@
 //     throw new Error('No file uploaded.');
 //   }
 
-//   const { documentType } = req.body; // Expect documentType (e.g., 'prescription', 'id_proof', 'other') from client
+//   const { documentType } = req.body; // Expect documentType (e.g., 'prescription', 'id_proof', 'other') from frontend
 
 //   if (!documentType || !['prescription', 'id_proof', 'other'].includes(documentType)) {
 //     // If the documentType is invalid, delete the uploaded file to prevent clutter
@@ -287,7 +287,7 @@
 //     throw new Error('No file uploaded.');
 //   }
 
-//   const { documentType } = req.body; // Expect documentType (e.g., 'prescription', 'id_proof', 'other') from client
+//   const { documentType } = req.body; // Expect documentType (e.g., 'prescription', 'id_proof', 'other') from frontend
 
 //   if (!documentType || !['prescription', 'id_proof', 'other'].includes(documentType)) {
 //     // If the documentType is invalid, delete the uploaded file to prevent clutter
@@ -565,7 +565,7 @@ const uploadDocument = asyncHandler(async (req, res) => {
     throw new Error('No file uploaded.');
   }
 
-  const { documentType } = req.body; // Expect documentType (e.g., 'prescription', 'id_proof', 'other') from client
+  const { documentType } = req.body; // Expect documentType (e.g., 'prescription', 'id_proof', 'other') from frontend
 
   // Validate documentType against allowed values
   if (!documentType || !['prescription', 'id_proof', 'other'].includes(documentType)) {

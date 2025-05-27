@@ -1,4 +1,4 @@
-// client/src/pages/appointments/AppointmentConfirmationPage.jsx
+// frontend/src/pages/appointments/AppointmentConfirmationPage.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 

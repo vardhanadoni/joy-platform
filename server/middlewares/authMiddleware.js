@@ -33,7 +33,46 @@ const protect = asyncHandler(async (req, res, next) => {
   }
 });
 
+const doctorAuth = (req, res, next) => {
+  // Assuming `req.user` is populated by the `protect` middleware
+  if (req.user && req.user.role === 'doctor') {
+    next(); // User is a doctor, proceed to the next middleware/controller
+  } else {
+    // If not a doctor, send a 403 Forbidden error
+    res.status(403);
+    throw new Error('Not authorized to access this resource (Doctor role required).');
+  }
+};
+
+const patientAuth = (req, res, next) => {
+  // Assuming `req.user` is populated by the `protect` middleware
+  if (req.user && req.user.role === 'patient') {
+    next(); // User is a patient, proceed to the next middleware/controller
+  } else {
+    // If not a patient, send a 403 Forbidden error
+    res.status(403);
+    throw new Error('Not authorized to access this resource (Patient role required).');
+  }
+};
+
+// --- NEW: Generic authorizeRoles middleware ---
+const authorizeRoles = (...roles) => {
+  return (req, res, next) => {
+    if (!req.user || !req.user.role) {
+      res.status(401);
+      throw new Error('Not authorized, user role not found.');
+    }
+    if (!roles.includes(req.user.role)) {
+      res.status(403);
+      throw new Error(`Role (${req.user.role}) is not authorized to access this resource. Allowed roles: ${roles.join(', ')}`);
+    }
+    next();
+  };
+};
+
 // A small utility for handling async errors in Express route handlers
 // This replaces wrapping every async handler in a try-catch block
 
-module.exports = { protect, asyncHandler };
+module.exports = { protect, asyncHandler,doctorAuth,
+  patientAuth,
+  authorizeRoles, };

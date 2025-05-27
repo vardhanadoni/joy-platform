@@ -1,5 +1,5 @@
 // // import React from 'react';
-// // import ReactDOM from 'react-dom/client';
+// // import ReactDOM from 'react-dom/frontend';
 // // import './index.css';
 // // import App from './App';
 // // import reportWebVitals from './reportWebVitals';
@@ -18,7 +18,7 @@
 
 
 // // import React from 'react';
-// // import ReactDOM from 'react-dom/client';
+// // import ReactDOM from 'react-dom/frontend';
 // // import './index.css';
 // // import App from './App';
 // // import reportWebVitals from './reportWebVitals';
@@ -40,9 +40,9 @@
 
 
 
-// // client/src/index.js
+// // frontend/src/index.js
 // import React from 'react';
-// import ReactDOM from 'react-dom/client';
+// import ReactDOM from 'react-dom/frontend';
 // import './index.css'; // Or your main CSS file
 // import App from './App';
 // import { store } from './app/store'; // <--- IMPORT YOUR REDUX STORE
@@ -70,9 +70,9 @@
 
 
 
-// client/src/index.js
+// frontend/src/index.js
 // import React from 'react';
-// import ReactDOM from 'react-dom/client';
+// import ReactDOM from 'react-dom/frontend';
 // import './index.css'; // Or your main CSS file
 // import App from './App';
 
@@ -105,48 +105,47 @@
 // );
 
 
+// src/index.js
+
 import React from 'react';
-import ReactDOM from 'react-dom/client'; // Keep .client for React 18
-import './index.css'; // Or your main CSS file
+import ReactDOM from 'react-dom/client';
+import './index.css';
 import App from './App';
 
 // Redux Imports
 import { store } from './app/store'; // Your Redux store
-import { Provider } from 'react-redux'; // Redux Provider
-import { injectStore } from './services/patientService';
+import { Provider } from 'react-redux';
+
+// Removed: import { injectStore } from './services/patientService'; // NO LONGER NEEDED
+// Removed: injectStore(store); // NO LONGER NEEDED
+
 // AuthContext Imports
-import { AuthProvider } from './contexts/AuthContext'; // <--- IMPORT YOUR AUTHPROVIDER
+import { AuthProvider } from './contexts/AuthContext';
 
 // React Toastify Imports
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // Web Vitals Import (if you want to keep it)
-import reportWebVitals from './reportWebVitals'; // <--- Ensure this is imported if you use it
+import reportWebVitals from './reportWebVitals';
 
 // React Router DOM Imports
 import { BrowserRouter as Router } from 'react-router-dom';
 
-injectStore(store);
-
-const root = ReactDOM.createRoot(document.getElementById('root')); // CORRECTED LINE HERE
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* Wrap with AuthProvider FIRST, then Redux Provider (or vice-versa, order often doesn't strictly matter here but this is a common pattern) */}
-    <AuthProvider>
-      <Provider store={store}>
-        {/* WRAP THE APP COMPONENT WITH <Router> */}
+    {/* CORRECT ORDER: Provider first, then AuthProvider (if AuthProvider uses Redux hooks) */}
+    <Provider store={store}> {/* <<< Provider is now the outermost wrapper for Redux */}
+      <AuthProvider> {/* <<< AuthProvider is now inside the Provider */}
         <Router>
           <App />
-          {/* ToastContainer should be inside the Provider, or directly under App, but outside the Router */}
           <ToastContainer />
         </Router>
-      </Provider>
-    </AuthProvider>
+      </AuthProvider>
+    </Provider>
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+
 reportWebVitals();

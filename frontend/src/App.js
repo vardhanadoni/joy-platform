@@ -1,4 +1,4 @@
-// // client/src/App.jsx
+// // frontend/src/App.jsx
 // import React from 'react';
 // import { Routes, Route } from 'react-router-dom';
 // import { ToastContainer } from 'react-toastify';
@@ -44,7 +44,7 @@
 // export default App;
 
 
-// client/src/App.js
+// frontend/src/App.js
 // import React from 'react';
 // import { Routes, Route } from 'react-router-dom';
 // import { ToastContainer } from 'react-toastify';
@@ -96,8 +96,8 @@
 
 
 
-// client/src/App.js
-// client/src/App.js
+// frontend/src/App.js
+// frontend/src/App.js
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -116,6 +116,7 @@ import PatientProfilePage from './pages/profile/PatientProfilePage';
 import PatientDocumentsPage from './pages/documents/PatientDocumentsPage';
 import BookAppointmentPage from './pages/dashboard/BookAppointmentPage';
 import AppointmentConfirmationPage from './pages/appointments/AppointmentConfirmationPage'; 
+import MyAppointmentsPage from './pages/dashboard/MyAppointmentsPage';
 
 function App() {
   return (
@@ -141,6 +142,7 @@ function App() {
             <Route path="/documents" element={<PatientDocumentsPage />} />
             <Route path='/book-appointment' element={<BookAppointmentPage />} />
             <Route path='/appointment-confirmation' element={<AppointmentConfirmationPage />} />
+            <Route path='/my-appointments' element={<MyAppointmentsPage />} />
           </Route>
 
           {/* Catch-all for undefined routes */}

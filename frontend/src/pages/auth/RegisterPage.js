@@ -1,4 +1,4 @@
-// client/src/pages/auth/RegisterPage.js
+// frontend/src/pages/auth/RegisterPage.js
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';

@@ -1,4 +1,4 @@
-// client/src/components/ui/Spinner.js
+// frontend/src/components/ui/Spinner.js
 import React from 'react';
 
 function Spinner() {

@@ -1,4 +1,4 @@
-// // client/src/pages/profile/PatientProfilePage.js
+// // frontend/src/pages/profile/PatientProfilePage.js
 // import React, { useState, useEffect } from 'react';
 // import { toast } from 'react-toastify';
 // import patientService from '../../services/patientService'; // Adjust path if needed
@@ -240,7 +240,7 @@
 
 
 
-// client/src/pages/profile/PatientProfilePage.js
+// frontend/src/pages/profile/PatientProfilePage.js
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import patientService from '../../services/patientService';

@@ -1,4 +1,4 @@
-// client/src/pages/dashboard/DashboardPage.js
+// frontend/src/pages/dashboard/DashboardPage.js
 import React from 'react';
 
 const DashboardPage = () => {

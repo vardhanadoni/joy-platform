@@ -1,4 +1,4 @@
-/* client/src/index.css (or your main CSS file) */
+/* frontend/src/index.css (or your main CSS file) */
 
 .loadingSpinnerContainer {
   position: fixed;
@@ -29,4 +29,61 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+
+.appointment-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+}
+
+.appointment-card h3 {
+  margin: 0 0 10px 0;
+  color: #0056b3;
+  font-size: 1.2em;
+}
+
+.appointment-card p {
+  margin: 5px 0;
+  font-size: 0.9em;
+  color: #333;
+}
+
+
+/* Add these to your frontend/src/index.css or a global CSS file */
+.appointment-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.appointment-card h3 {
+  margin: 0 0 10px 0;
+  color: #007bff;
+  font-size: 1.3em;
+}
+
+.appointment-card p {
+  margin: 5px 0;
+  font-size: 0.95em;
+  color: #555;
+}
+
+/* Styles for input/select focus in BookAppointmentPage */
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+  outline: none;
+}
+
+/* Styles for submit button hover/disabled in BookAppointmentPage */
+.form-group button[type="submit"]:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+}
+
+.form-group button[type="submit"]:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  transform: none;
 }

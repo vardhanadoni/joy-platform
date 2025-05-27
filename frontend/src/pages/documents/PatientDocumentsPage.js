@@ -1,4 +1,4 @@
-// client/src/pages/documents/PatientDocumentsPage.js
+// frontend/src/pages/documents/PatientDocumentsPage.js
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import patientService from '../../services/patientService';

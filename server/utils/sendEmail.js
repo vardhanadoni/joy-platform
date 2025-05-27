@@ -23,7 +23,7 @@ const sendEmail = async (options) => {
     to: options.to,          // List of receivers
     subject: options.subject,// Subject line
     html: options.html,      // HTML body
-    text: options.text,      // Plain text body (for clients that don't support HTML)
+    text: options.text,      // Plain text body (for frontends that don't support HTML)
     attachments: options.attachments || [] // Array of attachments, if any
   };
 

@@ -1,4 +1,4 @@
-// client/src/services/authSlice.js
+// frontend/src/services/authSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import authService from './authService'; // Assuming authService.js is in the same directory
 
@@ -9,7 +9,7 @@ const initialState = {
   user: user ? user : null, // If user exists in localStorage, load it
   isError: false,
   isSuccess: false,
-  isLoading: user ? false : true,
+  isLoading: false,
   message: '',
 };
 
@@ -93,7 +93,7 @@ export const authSlice = createSlice({
       })
       .addCase(logout.fulfilled, (state) => {
         state.user = null;
-        state.isLoading = false;
+        //state.isLoading = false;
       });
   },
 });
