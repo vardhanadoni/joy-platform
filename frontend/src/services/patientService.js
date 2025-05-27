@@ -434,156 +434,346 @@
 
 
 // src/services/patientService.js
+// import apiClient from '../utils/apiClient';
+
+// // Function to get patient profile
+// const getProfile = async (token) => {
+//   try {
+//     const config = {
+//       headers: {
+//         Authorization: `Bearer ${token}`,
+//       },
+//     };
+//     // Corrected: Removed '/api' prefix
+//     const response = await apiClient.get('/profile', config);
+//     return response.data;
+//   } catch (error) {
+//     console.error('Error fetching patient profile:', error.response?.data?.message || error.message);
+//     throw new Error(error.response?.data?.message || 'Failed to fetch profile.');
+//   }
+// };
+
+// const getDoctorAvailableSlots = async (doctorId, date, token) => {
+//   const config = {
+//     headers: {
+//       Authorization: `Bearer ${token}`,
+//     },
+//     params: {
+//       date: date
+//     }
+//   };
+//   // Corrected: Removed '/api' prefix
+//   const response = await apiClient.get(`/doctors/${doctorId}/available-slots`, config);
+//   return response.data;
+// };
+
+// // Function to update patient profile
+// const updateProfile = async (profileData, token) => {
+//   try {
+//     const config = {
+//       headers: {
+//         Authorization: `Bearer ${token}`,
+//         'Content-Type': 'application/json',
+//       },
+//     };
+//     // Corrected: Removed '/api' prefix
+//     const response = await apiClient.put(`/profile`, profileData, config);
+//     return response.data;
+//   } catch (error) {
+//     console.error('Error updating patient profile:', error.response?.data?.message || error.message);
+//     throw new Error(error.response?.data?.message || 'Failed to update profile.');
+//   }
+// };
+
+// // Function to upload a general document
+// const uploadDocument = async (formData, token) => {
+//   try {
+//     const config = {
+//       headers: {
+//         Authorization: `Bearer ${token}`,
+//         'Content-Type': 'multipart/form-data', // IMPORTANT for file uploads
+//       },
+//     };
+//     // Corrected: Removed '/api' prefix
+//     const response = await apiClient.post(`/upload/document`, formData, config);
+//     return response.data;
+//   } catch (error) {
+//     console.error('Error uploading document:', error.response?.data?.message || error.message);
+//     throw new Error(error.response?.data?.message || 'Failed to upload document.');
+//   }
+// };
+
+// // Function to get doctors
+// const getDoctors = async (token) => {
+//   const config = {
+//     headers: {
+//       Authorization: `Bearer ${token}`,
+//     },
+//   };
+//   // Corrected: Removed '/api' prefix
+//   const response = await apiClient.get('/doctors', config);
+//   return response.data;
+// };
+
+// // Function to book an appointment
+// const bookAppointment = async (appointmentData, token) => {
+//   const config = {
+//     headers: {
+//       Authorization: `Bearer ${token}`,
+//       'Content-Type': 'application/json', // Ensure content type is JSON
+//     },
+//   };
+//   // Corrected: Removed '/api' prefix
+//   const response = await apiClient.post('/appointments', appointmentData, config);
+//   return response.data;
+// };
+
+// // Function to upload a retinal image for prediction
+// const uploadRetinalImage = async (formData, token) => {
+//   try {
+//     const config = {
+//       headers: {
+//         Authorization: `Bearer ${token}`,
+//         'Content-Type': 'multipart/form-data', // IMPORTANT for file uploads
+//       },
+//     };
+//     // Corrected: Removed '/api' prefix
+//     const response = await apiClient.post(`/upload/retinal-image`, formData, config);
+//     return response.data;
+//   } catch (error) {
+//     console.error('Error uploading retinal image:', error.response?.data?.message || error.message);
+//     throw new Error(error.response?.data?.message || 'Failed to upload retinal image or get prediction.');
+//   }
+// };
+
+// // Function to get all patient documents
+// const getPatientDocuments = async (token) => {
+//   try {
+//     const config = {
+//       headers: {
+//         Authorization: `Bearer ${token}`,
+//       },
+//     };
+//     // Corrected: Removed '/api' prefix
+//     const response = await apiClient.get(`/patient/documents`, config);
+//     return response.data;
+//   } catch (error) {
+//     console.error('Error fetching patient documents:', error.response?.data?.message || error.message);
+//     throw new Error(error.response?.data?.message || 'Failed to fetch documents.');
+//   }
+// };
+
+// const cancelAppointment = async (appointmentId, token) => {
+//     try {
+//         const config = {
+//             headers: {
+//                 Authorization: `Bearer ${token}`,
+//             },
+//         };
+//         const response = await apiClient.put(`/appointments/${appointmentId}/cancel`, {}, config); // Pass empty object for body as it's a PUT
+//         return response.data;
+//     } catch (error) {
+//         console.error('Error cancelling appointment:', error.response?.data?.message || error.message);
+//         throw new Error(error.response?.data?.message || 'Failed to cancel appointment.');
+//     }
+// };
+
+// const getMyAppointments = async (token) => {
+//   const config = {
+//     headers: {
+//       Authorization: `Bearer ${token}`,
+//     },
+//   };
+//   // Corrected: Removed '/api' prefix
+//   const response = await apiClient.get('/appointments/me', config);
+//   return response.data;
+// };
+
+// const patientService = {
+//   getProfile,
+//   updateProfile,
+//   uploadDocument,
+//   uploadRetinalImage,
+//   getPatientDocuments,
+//   getDoctors,
+//   bookAppointment,
+//   getDoctorAvailableSlots,
+//   getMyAppointments,
+//   cancelAppointment,
+// };
+
+// export default patientService;
+
+
+
+
 import apiClient from '../utils/apiClient';
 
 // Function to get patient profile
 const getProfile = async (token) => {
-  try {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
-    // Corrected: Removed '/api' prefix
-    const response = await apiClient.get('/profile', config);
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching patient profile:', error.response?.data?.message || error.message);
-    throw new Error(error.response?.data?.message || 'Failed to fetch profile.');
-  }
+    try {
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        };
+        // Corrected: Removed '/api' prefix
+        const response = await apiClient.get('/profile', config);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching patient profile:', error.response?.data?.message || error.message);
+        throw new Error(error.response?.data?.message || 'Failed to fetch profile.');
+    }
 };
 
 const getDoctorAvailableSlots = async (doctorId, date, token) => {
-  const config = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-    params: {
-      date: date
-    }
-  };
-  // Corrected: Removed '/api' prefix
-  const response = await apiClient.get(`/doctors/${doctorId}/available-slots`, config);
-  return response.data;
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+        params: {
+            date: date
+        }
+    };
+    // Corrected: Removed '/api' prefix
+    const response = await apiClient.get(`/doctors/${doctorId}/available-slots`, config);
+    return response.data;
 };
 
 // Function to update patient profile
 const updateProfile = async (profileData, token) => {
-  try {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
-    };
-    // Corrected: Removed '/api' prefix
-    const response = await apiClient.put(`/profile`, profileData, config);
-    return response.data;
-  } catch (error) {
-    console.error('Error updating patient profile:', error.response?.data?.message || error.message);
-    throw new Error(error.response?.data?.message || 'Failed to update profile.');
-  }
+    try {
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+        };
+        // Corrected: Removed '/api' prefix
+        const response = await apiClient.put(`/profile`, profileData, config);
+        return response.data;
+    } catch (error) {
+        console.error('Error updating patient profile:', error.response?.data?.message || error.message);
+        throw new Error(error.response?.data?.message || 'Failed to update profile.');
+    }
 };
 
 // Function to upload a general document
 const uploadDocument = async (formData, token) => {
-  try {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'multipart/form-data', // IMPORTANT for file uploads
-      },
-    };
-    // Corrected: Removed '/api' prefix
-    const response = await apiClient.post(`/upload/document`, formData, config);
-    return response.data;
-  } catch (error) {
-    console.error('Error uploading document:', error.response?.data?.message || error.message);
-    throw new Error(error.response?.data?.message || 'Failed to upload document.');
-  }
+    try {
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'multipart/form-data', // IMPORTANT for file uploads
+            },
+        };
+        // Corrected: Removed '/api' prefix
+        const response = await apiClient.post(`/upload/document`, formData, config);
+        return response.data;
+    } catch (error) {
+        console.error('Error uploading document:', error.response?.data?.message || error.message);
+        throw new Error(error.response?.data?.message || 'Failed to upload document.');
+    }
 };
 
 // Function to get doctors
 const getDoctors = async (token) => {
-  const config = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  };
-  // Corrected: Removed '/api' prefix
-  const response = await apiClient.get('/doctors', config);
-  return response.data;
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    };
+    // Corrected: Removed '/api' prefix
+    const response = await apiClient.get('/doctors', config);
+    return response.data;
 };
 
 // Function to book an appointment
 const bookAppointment = async (appointmentData, token) => {
-  const config = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json', // Ensure content type is JSON
-    },
-  };
-  // Corrected: Removed '/api' prefix
-  const response = await apiClient.post('/appointments', appointmentData, config);
-  return response.data;
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json', // Ensure content type is JSON
+        },
+    };
+    // Corrected: Removed '/api' prefix
+    const response = await apiClient.post('/appointments', appointmentData, config);
+    return response.data;
 };
 
 // Function to upload a retinal image for prediction
 const uploadRetinalImage = async (formData, token) => {
-  try {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'multipart/form-data', // IMPORTANT for file uploads
-      },
-    };
-    // Corrected: Removed '/api' prefix
-    const response = await apiClient.post(`/upload/retinal-image`, formData, config);
-    return response.data;
-  } catch (error) {
-    console.error('Error uploading retinal image:', error.response?.data?.message || error.message);
-    throw new Error(error.response?.data?.message || 'Failed to upload retinal image or get prediction.');
-  }
+    try {
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        };
+        // Corrected: Removed '/api' prefix
+        const response = await apiClient.post(`/upload/retinal-image`, formData, config);
+        return response.data;
+    } catch (error) {
+        console.error('Error uploading retinal image:', error.response?.data?.message || error.message);
+        throw new Error(error.response?.data?.message || 'Failed to upload retinal image or get prediction.');
+    }
 };
 
 // Function to get all patient documents
 const getPatientDocuments = async (token) => {
-  try {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
-    // Corrected: Removed '/api' prefix
-    const response = await apiClient.get(`/patient/documents`, config);
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching patient documents:', error.response?.data?.message || error.message);
-    throw new Error(error.response?.data?.message || 'Failed to fetch documents.');
-  }
+    try {
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        };
+        // Corrected: Removed '/api' prefix
+        const response = await apiClient.get(`/patient/documents`, config);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching patient documents:', error.response?.data?.message || error.message);
+        throw new Error(error.response?.data?.message || 'Failed to fetch documents.');
+    }
+};
+
+// --- NEW FUNCTION: Cancel Appointment ---
+const cancelAppointment = async (appointmentId, token) => {
+    try {
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        };
+        // Correctly makes a PUT request to the cancellation endpoint
+        const response = await apiClient.put(`/appointments/${appointmentId}/cancel`, {}, config);
+        return response.data;
+    } catch (error) {
+        console.error('Error cancelling appointment:', error.response?.data?.message || error.message);
+        throw new Error(error.response?.data?.message || 'Failed to cancel appointment.');
+    }
 };
 
 const getMyAppointments = async (token) => {
-  const config = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  };
-  // Corrected: Removed '/api' prefix
-  const response = await apiClient.get('/appointments/me', config);
-  return response.data;
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    };
+    // Corrected: Removed '/api' prefix
+    const response = await apiClient.get('/appointments/me', config);
+    return response.data;
 };
 
 const patientService = {
-  getProfile,
-  updateProfile,
-  uploadDocument,
-  uploadRetinalImage,
-  getPatientDocuments,
-  getDoctors,
-  bookAppointment,
-  getDoctorAvailableSlots,
-  getMyAppointments,
+    getProfile,
+    updateProfile,
+    uploadDocument,
+    uploadRetinalImage,
+    getPatientDocuments,
+    getDoctors,
+    bookAppointment,
+    getDoctorAvailableSlots,
+    getMyAppointments,
+    cancelAppointment, // Correctly exported
 };
 
 export default patientService;
