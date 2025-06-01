@@ -19,7 +19,7 @@
 // export default PrivateRoute;
 
 
-// src/components/PrivateRoute.js
+// frontend/src/components/PrivateRoute.js
 import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux'; // Import useSelector

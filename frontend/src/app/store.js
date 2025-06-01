@@ -12,7 +12,7 @@
 // });
 
 
-// src/app/store.js
+// frontend/src/app/store.js
 import { configureStore } from '@reduxjs/toolkit';
 import authReducer, { logout } from '../services/authSlice'; // Import logout action
 import patientReducer from '../services/patientSlice';

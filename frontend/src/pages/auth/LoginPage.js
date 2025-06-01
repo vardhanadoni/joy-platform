@@ -88,7 +88,7 @@
 //   );
 // };
 
-// src/pages/auth/LoginPage.js
+// frontend/src/pages/auth/LoginPage.js
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { login, reset } from '../../services/authSlice'; // Import Redux login thunk

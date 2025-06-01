@@ -60,7 +60,7 @@
 
 
 
-// src/services/authService.js
+// frontend/src/services/authService.js
 import apiClient from '../utils/apiClient'; // IMPORT apiClient
 
 // Register user

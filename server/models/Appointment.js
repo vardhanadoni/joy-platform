@@ -37,6 +37,7 @@
 // module.exports = Appointment;
 
 
+// server/models/Appointment.js
 const mongoose = require('mongoose');
 
 const appointmentSchema = mongoose.Schema({

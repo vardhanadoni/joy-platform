@@ -611,7 +611,7 @@
 
 // export default PatientDashboard;
 
-
+//frontend/src/pages/dashboard/PatientDashboard.js
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify'; // Corrected import for toast
 import { useSelector, useDispatch } from 'react-redux'; // Import useSelector and useDispatch
